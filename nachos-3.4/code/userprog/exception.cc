@@ -440,7 +440,7 @@ void ExceptionHandler(ExceptionType which)
 			delete[] buf;
 			break;
 		}
-				case SC_Open:
+		case SC_Open:
 		{
 			// Input: arg1: Dia chi cua chuoi name, arg2: type
 			// Output: Tra ve OpenFileID neu thanh, -1 neu loi
