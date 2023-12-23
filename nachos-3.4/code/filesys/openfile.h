@@ -63,8 +63,15 @@ class FileHeader;
 
 class OpenFile {
   public:
+    //Khai bao bien type
+  	int type; 
+	// type 0 : read and write
+	// type 1 : only read
+	// type 2 : stdin
+	// type 3 : stdout
     OpenFile(int sector);		// Open a file whose header is located
 					// at "sector" on the disk
+	OpenFile(int sector, int type);	
     ~OpenFile();			// Close the file
 
     void Seek(int position); 		// Set the position from which to 
@@ -85,7 +92,10 @@ class OpenFile {
 					// file (this interface is simpler 
 					// than the UNIX idiom -- lseek to 
 					// end of file, tell, lseek back 
-    
+    int GetCurrentPos()
+	{
+		return seekPosition;
+	}
   private:
     FileHeader *hdr;			// Header for this file 
     int seekPosition;			// Current position within the file
