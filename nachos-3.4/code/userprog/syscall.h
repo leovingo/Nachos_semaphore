@@ -22,7 +22,7 @@
 #define SC_Exit 	    1
 #define SC_Exec 	    2
 #define SC_Join 	    3
-#define SC_Create 	    4
+#define SC_CreateFile 	    4
 #define SC_Open 	    5
 #define SC_Read 	    6
 #define SC_Write 	    7
@@ -36,8 +36,7 @@
 #define SC_PrintChar 	14
 #define SC_ReadString 	15
 #define SC_PrintString 	16
-#define SC_Seek			17
-#define SC_CreateSemaphore	18
+
 #ifndef IN_ASM
 
 /* The system call interface.  These are the operations the Nachos
@@ -101,7 +100,7 @@ typedef int OpenFileId;
 #define ConsoleOutput 1
 
 /* Create a Nachos file, with "name" */
-int Create(char *name);
+int CreateFile(char *name);
 
 /* Open the Nachos file "name", and return an "OpenFileId" that can
  * be used to read and write to the file.

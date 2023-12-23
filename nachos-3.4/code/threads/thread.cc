@@ -38,9 +38,6 @@ Thread::Thread(char* threadName)
     stackTop = NULL;
     stack = NULL;
     status = JUST_CREATED;
-
-    processID = 0;
-    exitStatus = 0;
 #ifdef USER_PROGRAM
     space = NULL;
 #endif
@@ -92,7 +89,7 @@ Thread::Fork(VoidFunctionPtr func, int arg)
 {
     DEBUG('t', "Forking thread \"%s\" with func = 0x%x, arg = %d\n",
 	  name, (int) func, arg);
-    //Allocate stack memory for func with arg
+    
     StackAllocate(func, arg);
 
     IntStatus oldLevel = interrupt->SetLevel(IntOff);
