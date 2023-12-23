@@ -27,9 +27,14 @@
 					// Nachos file system as calls to UNIX!
 					// See definitions listed under #else
 class OpenFile {
+
   public:
+//Khai bao bien type
+  	int type;
     OpenFile(int f) { file = f; currentOffset = 0; }	// open the file
+    OpenFile(int f, int t) { file = f; currentOffset = 0; type = t; }	// mo file voi tham so type
     ~OpenFile() { Close(file); }			// close the file
+
 
     int ReadAt(char *into, int numBytes, int position) { 
     		Lseek(file, position, 0); 
@@ -52,7 +57,7 @@ class OpenFile {
 		}
 
     int Length() { Lseek(file, 0, 2); return Tell(file); }
-    
+    int GetCurrentPos() { currentOffset = Tell(file); return currentOffset; }
   private:
     int file;
     int currentOffset;
@@ -71,7 +76,7 @@ class OpenFile {
 	// type 3 : stdout
     OpenFile(int sector);		// Open a file whose header is located
 					// at "sector" on the disk
-	OpenFile(int sector, int type);	
+    OpenFile(int sector, int type);	
     ~OpenFile();			// Close the file
 
     void Seek(int position); 		// Set the position from which to 
@@ -94,7 +99,7 @@ class OpenFile {
 					// end of file, tell, lseek back 
     int GetCurrentPos()
 	{
-		return seekPosition;
+	return seekPosition;
 	}
   private:
     FileHeader *hdr;			// Header for this file 

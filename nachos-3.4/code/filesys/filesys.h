@@ -48,7 +48,7 @@ class FileSystem {
      //Khai bao 2 bien 
   	OpenFile** openf; //De kiem tra xem file co dang mo khong
 	int index;
-    FileSystem(bool format) {
+    	FileSystem(bool format) {
 		openf = new OpenFile*[15];
 		index = 0;
 		for (int i = 0; i < 15; ++i)
@@ -122,8 +122,8 @@ class FileSystem {
 					// Create a file (UNIX creat)
 
     OpenFile* Open(char *name); 	// Open a file (UNIX open)
-	OpenFile* Open(char *name, int type); //Mo file voi tham so type
-	int FindFreeSlot();
+    OpenFile* Open(char *name, int type); //Mo file voi tham so type
+    int FindFreeSlot();
     bool Remove(char *name);  		// Delete a file (UNIX unlink)
 
     void List();			// List all the files in the file system
